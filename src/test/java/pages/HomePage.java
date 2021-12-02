@@ -1,6 +1,8 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class HomePage {
     WebDriver driver;
@@ -13,4 +15,11 @@ public class HomePage {
         driver.get("https://ebanq.com/");
     }
 
+    public WebElement getElement(String element) {
+        return driver.findElement(By.id(element));
+    }
+
+    public String getText(String text) {
+        return driver.findElement(By.id(text)).getText();
+    }
 }
