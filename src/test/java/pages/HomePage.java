@@ -4,19 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage {
-    WebDriver driver;
+public class HomePage extends BasePage{
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void open() {
         driver.get("https://ebanq.com/");
     }
 
-    public WebElement getElement(String element) {
-        return driver.findElement(By.id(element));
+    public WebElement getElement(By element) {
+        return driver.findElement(element);
     }
 
     public String getText(String text) {
