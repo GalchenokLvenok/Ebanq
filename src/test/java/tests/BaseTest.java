@@ -15,6 +15,8 @@ public abstract class BaseTest {
     WebDriver driver;
     HomePage homePage;
     LoginPage loginPage;
+    public static final String USER_LOGIN = "Demo-User";
+    public static final String USER_PSW = "Demo-Access1";
 
     @BeforeMethod
     public void setUp() {

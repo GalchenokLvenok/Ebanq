@@ -2,23 +2,16 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class HomePage extends BasePage{
+    By SITE_LOGO_INNER = By.cssSelector(".header .aside-bar__image");
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public void open() {
-        driver.get("https://ebanq.com/");
-    }
+    public boolean isPageOpened() {
+        return driver.findElement(SITE_LOGO_INNER).isDisplayed();
 
-    public WebElement getElement(By element) {
-        return driver.findElement(element);
-    }
-
-    public String getText(String text) {
-        return driver.findElement(By.id(text)).getText();
     }
 }
