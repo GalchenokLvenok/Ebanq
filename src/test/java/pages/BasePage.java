@@ -7,9 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
+    public static final String URL = "https://demo.ebanq.com/";
     WebDriver driver;
     WebDriverWait wait;
-    public static final String URL = "https://demo.ebanq.com/";
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

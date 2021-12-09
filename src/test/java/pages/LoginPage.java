@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     public static final By USERNAME_INPUT = By.cssSelector("[type = email]");
     public static final By PASSWORD_INPUT = By.cssSelector("[type = password]");
     public static final By LOGIN_BUTTON = By.cssSelector("[type = submit]");
@@ -24,6 +24,6 @@ public class LoginPage extends BasePage{
     }
 
     public String getErrorMessage(String type) {
-        return driver.findElement(By.xpath(String.format(ERROR_TEXT,type))).getText();
+        return driver.findElement(By.xpath(String.format(ERROR_TEXT, type))).getText();
     }
 }

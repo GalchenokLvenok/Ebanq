@@ -2,7 +2,8 @@ package tests;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
     String ERROR_TEXT = "Field is required.";
@@ -12,29 +13,29 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginShouldBeValid() {
         loginPage.open();
-        loginPage.login(USER_LOGIN,USER_PSW);
-        assertTrue(homePage.isPageOpened(),"Login is failed");
+        loginPage.login(USER_LOGIN, USER_PSW);
+        assertTrue(homePage.isPageOpened(), "Login is failed");
     }
 
     @Test
     public void loginShouldNotBeEmpty() {
         loginPage.open();
-        loginPage.login("",USER_PSW);
-        assertEquals(loginPage.getErrorMessage("email"),ERROR_TEXT,"Empty login validation doesn't work");
+        loginPage.login("", USER_PSW);
+        assertEquals(loginPage.getErrorMessage("email"), ERROR_TEXT, "Empty login validation doesn't work");
     }
 
     @Test
     public void passwordShouldNotBeEmpty() {
         loginPage.open();
-        loginPage.login(USER_LOGIN,"");
-        assertEquals(loginPage.getErrorMessage("password"),ERROR_TEXT,"Empty password validation doesn't work");
+        loginPage.login(USER_LOGIN, "");
+        assertEquals(loginPage.getErrorMessage("password"), ERROR_TEXT, "Empty password validation doesn't work");
     }
 
     @Test
     public void UsernameAndPasswordShouldBeCorrect() {
         loginPage.open();
-        loginPage.login("Demo","12345678");
+        loginPage.login("Demo", "12345678");
         loginPage.waitVisibilityOfElement(WAIT_ERROR_MESSAGE);
-        assertEquals(loginPage.getErrorMessage("password"),WRONG_TEXT,"Incorrect username and password validation doesn't work");
+        assertEquals(loginPage.getErrorMessage("password"), WRONG_TEXT, "Incorrect username and password validation doesn't work");
     }
 }

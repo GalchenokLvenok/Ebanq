@@ -12,11 +12,11 @@ import pages.LoginPage;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
+    public static final String USER_LOGIN = "Demo-User";
+    public static final String USER_PSW = "Demo-Access1";
     WebDriver driver;
     HomePage homePage;
     LoginPage loginPage;
-    public static final String USER_LOGIN = "Demo-User";
-    public static final String USER_PSW = "Demo-Access1";
 
     @BeforeMethod
     public void setUp() {
