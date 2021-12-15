@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,4 +21,18 @@ public abstract class BasePage {
         return new WebDriverWait(driver, 10).until(
                 ExpectedConditions.visibilityOfElementLocated(By.cssSelector(element)));
     }
+
+    public abstract boolean isPageOpened();
+
+    public boolean isExist(By element) {
+        try{
+            driver.findElement(element);
+            return true;
+        }
+        catch (NoSuchElementException exception) {
+            System.out.println(exception.getMessage());
+            return false;
+        }
+    }
+
 }

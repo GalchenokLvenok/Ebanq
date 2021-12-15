@@ -13,6 +13,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginShouldBeValid() {
         loginPage.open();
+        assertTrue(loginPage.isPageOpened(), "Login page is not opened");
         loginPage.login(USER_LOGIN, USER_PSW);
         assertTrue(homePage.isPageOpened(), "Login is failed");
     }
@@ -20,6 +21,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginShouldNotBeEmpty() {
         loginPage.open();
+        assertTrue(loginPage.isPageOpened(), "Login page is not opened");
         loginPage.login("", USER_PSW);
         assertEquals(loginPage.getErrorMessage("email"), ERROR_TEXT, "Empty login validation doesn't work");
     }
@@ -27,6 +29,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void passwordShouldNotBeEmpty() {
         loginPage.open();
+        assertTrue(loginPage.isPageOpened(), "Login page is not opened");
         loginPage.login(USER_LOGIN, "");
         assertEquals(loginPage.getErrorMessage("password"), ERROR_TEXT, "Empty password validation doesn't work");
     }
@@ -34,6 +37,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void UsernameAndPasswordShouldBeCorrect() {
         loginPage.open();
+        assertTrue(loginPage.isPageOpened(), "Login page is not opened");
         loginPage.login("Demo", "12345678");
         loginPage.waitVisibilityOfElement(WAIT_ERROR_MESSAGE);
         assertEquals(loginPage.getErrorMessage("password"), WRONG_TEXT, "Incorrect username and password validation doesn't work");

@@ -13,8 +13,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void open() {
+    public boolean isPageOpened() {
+        return isExist(LOGIN_BUTTON);
+    }
+
+    public LoginPage open() {
         driver.get(URL + "log-in");
+        return this;
     }
 
     public void login(String user, String psw) {
