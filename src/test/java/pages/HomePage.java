@@ -11,7 +11,6 @@ public class HomePage extends BasePage {
     }
 
     public boolean isPageOpened() {
-        return driver.findElement(SITE_LOGO_INNER).isDisplayed();
-
+        return isExist(SITE_LOGO_INNER);
     }
 }

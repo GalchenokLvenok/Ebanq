@@ -15,8 +15,8 @@ public abstract class BaseTest {
     public static final String USER_LOGIN = "Demo-User";
     public static final String USER_PSW = "Demo-Access1";
     WebDriver driver;
-    HomePage homePage;
     LoginPage loginPage;
+    HomePage homePage;
 
     @BeforeMethod
     public void setUp() {
@@ -26,8 +26,8 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         options.addArguments("--start-maximized");
-        homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
