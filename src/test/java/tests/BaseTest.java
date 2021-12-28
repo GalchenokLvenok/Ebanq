@@ -6,8 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.HomePage;
-import pages.LoginPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +16,9 @@ public abstract class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
     HomePage homePage;
+    TransfersBetweenAccountsPage transfersBetweenAccountsPage;
+    TransfersPage transfersPage;
+    SuccessPopup successPopup;
 
     @BeforeMethod
     public void setUp() {
@@ -24,10 +26,14 @@ public abstract class BaseTest {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(35, TimeUnit.SECONDS);
         options.addArguments("--start-maximized");
+        driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
+        transfersBetweenAccountsPage = new TransfersBetweenAccountsPage(driver);
+        transfersPage = new TransfersPage(driver);
+        successPopup = new SuccessPopup(driver);
     }
 
     @AfterMethod(alwaysRun = true)

@@ -25,11 +25,10 @@ public abstract class BasePage {
     public abstract boolean isPageOpened();
 
     public boolean isExist(By element) {
-        try{
+        try {
             driver.findElement(element);
             return true;
-        }
-        catch (NoSuchElementException exception) {
+        } catch (NoSuchElementException exception) {
             System.out.println(exception.getMessage());
             return false;
         }
