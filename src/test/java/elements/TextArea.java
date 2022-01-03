@@ -5,13 +5,15 @@ import org.openqa.selenium.WebDriver;
 
 public class TextArea {
     WebDriver driver;
-    By textLocator = By.id("description");
+    String label;
+    String textLocator = "//label[contains(text(),'%s')]//following::textarea";
 
-    public TextArea(WebDriver driver) {
+    public TextArea(WebDriver driver, String label) {
         this.driver = driver;
+        this.label = label;
     }
 
     public void enterText(String text) {
-        driver.findElement(textLocator).sendKeys(text);
+        driver.findElement(By.xpath(String.format(textLocator, label))).sendKeys(text);
     }
 }

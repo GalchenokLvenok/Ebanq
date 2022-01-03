@@ -28,8 +28,8 @@ public class TransfersBetweenAccountsPage extends BasePage {
     public TransfersBetweenAccountsPage fillTransfer(Transfer transfer) {
         new DropDown(driver, "Debit from").select(transfer.getDebitAccount());
         new DropDown(driver, "Credit to").select(transfer.getCreditAccount());
-        new Input(driver).enterText(transfer.getAmountTransfer());
-        new TextArea(driver).enterText(transfer.getDescriptionTransfer());
+        new Input(driver, "Outgoing Amount").enterText(transfer.getAmountTransfer());
+        new TextArea(driver, "Description").enterText(transfer.getDescriptionTransfer());
         return new TransfersBetweenAccountsPage(driver);
     }
 

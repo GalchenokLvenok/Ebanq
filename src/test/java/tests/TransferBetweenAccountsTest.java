@@ -1,12 +1,12 @@
 package tests;
 
 import models.Transfer;
+import models.TransferFactory;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
 public class TransferBetweenAccountsTest extends BaseTest {
-
 
     @Test
     public void transferShouldBeSucceed() {
@@ -17,7 +17,8 @@ public class TransferBetweenAccountsTest extends BaseTest {
         transfersBetweenAccountsPage.open();
         assertTrue(transfersBetweenAccountsPage.isPageOpened(), "Transfer between accounts page is not opened");
 
-        Transfer transfer = new Transfer("10", "EBQ11223487456", "511264340", "Transfer between accounts");
+        Transfer transfer = TransferFactory.get();
+
         transfersBetweenAccountsPage
                 .fillTransfer(transfer)
                 .submit("Continue")
@@ -34,12 +35,15 @@ public class TransferBetweenAccountsTest extends BaseTest {
         transfersBetweenAccountsPage.open();
         assertTrue(transfersBetweenAccountsPage.isPageOpened(), "Transfer between accounts page is not opened");
 
-        Transfer transfer = new Transfer("120", "EBQ11223487456", "EBQ11113487654", "Sum was fixed");
+        Transfer transfer = TransferFactory.get();
+
         transfersBetweenAccountsPage
                 .fillTransfer(transfer)
                 .submit("Continue")
                 .submit("Back");
-        Transfer transfer2 = new Transfer("3", "EBQ11223487456", "EBQ11113487654", "");
+
+        Transfer transfer2 = TransferFactory.get("EBQ11113487654","EBQ11223487456");
+
         transfersBetweenAccountsPage
                 .fillTransfer(transfer2)
                 .submit("Continue")
@@ -56,7 +60,8 @@ public class TransferBetweenAccountsTest extends BaseTest {
         transfersBetweenAccountsPage.open();
         assertTrue(transfersBetweenAccountsPage.isPageOpened(), "Transfer between accounts page is not opened");
 
-        Transfer transfer = new Transfer("120", "EBQ11223487456", "EBQ11113487654", "Sum was fixed");
+        Transfer transfer = TransferFactory.get();
+
         transfersBetweenAccountsPage
                 .fillTransfer(transfer)
                 .submit("Cancel");

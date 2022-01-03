@@ -26,7 +26,6 @@ public abstract class BaseTest {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(35, TimeUnit.SECONDS);
         options.addArguments("--start-maximized");
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
