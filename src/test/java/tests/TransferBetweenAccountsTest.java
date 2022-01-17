@@ -2,13 +2,15 @@ package tests;
 
 import models.Transfer;
 import models.TransferFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
 public class TransferBetweenAccountsTest extends BaseTest {
 
-    @Test
+
+    @Test(description = "Positive test")
     public void transferShouldBeSucceed() {
         loginPage.open();
         assertTrue(loginPage.isPageOpened(), "Login page is not opened");

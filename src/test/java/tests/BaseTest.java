@@ -4,12 +4,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
 public abstract class BaseTest {
     public static final String USER_LOGIN = "Demo-User";
     public static final String USER_PSW = "Demo-Access1";
@@ -20,13 +22,21 @@ public abstract class BaseTest {
     TransfersPage transfersPage;
     SuccessPopup successPopup;
 
+    @Parameters({"browser"})
     @BeforeMethod
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver();
+    public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
+        if(browser.equals("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            driver = new ChromeDriver();
+            options.addArguments("--start-maximized");
+        } else if(browser.equals("safari")) {
+            WebDriverManager.safaridriver().setup();
+            driver = new SafariDriver();
+        }
+        testContext.setAttribute("driver", driver);
+
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        options.addArguments("--start-maximized");
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
